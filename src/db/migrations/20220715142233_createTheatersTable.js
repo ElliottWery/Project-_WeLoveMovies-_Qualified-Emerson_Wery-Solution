@@ -1,7 +1,6 @@
-
-exports.up = function(knex) {
+exports.up = function (knex) {
   return knex.schema.createTable("theaters", (table) => {
-    table.increments("theater_id").primary();
+    table.increments("theater_id").primary().unique();
     table.string("name");
     table.string("address_line_1");
     table.string("address_line_2");
@@ -12,6 +11,6 @@ exports.up = function(knex) {
   });
 };
 
-exports.down = function(knex) {
-  return knex.schema.droptTable("theaters");
+exports.down = function (knex) {
+  return knex.schema.dropTable("theaters");
 };

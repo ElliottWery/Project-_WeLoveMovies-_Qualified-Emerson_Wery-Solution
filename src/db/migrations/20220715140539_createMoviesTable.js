@@ -1,6 +1,6 @@
-exports.up = function(knex) {
+exports.up = function (knex) {
   return knex.schema.createTable("movies", (table) => {
-    table.increments("movie_id").primary();
+    table.increments("movie_id").primary().unique();
     table.string("title");
     table.integer("runtime_in_minutes");
     table.string("rating");
@@ -10,6 +10,6 @@ exports.up = function(knex) {
   });
 };
 
-exports.down = function(knex) {
+exports.down = function (knex) {
   return knex.schema.dropTable("movies");
 };
